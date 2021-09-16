@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello_chat_frargments">Hello chat frargments</string>
+    <string name="hello_user_fragment">Hello user fragment</string>
+</resources>

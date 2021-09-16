@@ -37,19 +37,18 @@
                 </TextView>
 
             </androidx.appcompat.widget.Toolbar>
+        <com.google.android.material.tabs.TabLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tab_layout"
+            android:background="@color/Auburn"
+            app:tabSelectedTextColor="@color/white"
+            app:tabIndicatorColor="@color/Auburn"
+            app:tabTextColor= "@color/grey">
+        </com.google.android.material.tabs.TabLayout>
 
     </com.google.android.material.appbar.AppBarLayout>
 
-
-    <com.google.android.material.tabs.TabLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/tab_layout"
-        android:background="@color/Auburn"
-        app:tabSelectedTextColor="@color/white"
-        app:tabIndicatorColor="@color/Auburn"
-        app:tabTextColor= "@color/grey">
-    </com.google.android.material.tabs.TabLayout>
 
     <androidx.viewpager2.widget.ViewPager2
         android:layout_width="match_parent"

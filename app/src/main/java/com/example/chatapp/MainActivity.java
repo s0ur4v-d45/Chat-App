@@ -22,6 +22,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.chatapp.Fragments.ChatsFragment;
+import com.example.chatapp.Fragments.ProfileFragment;
 import com.example.chatapp.Fragments.UsersFragment;
 import com.example.chatapp.Model.User;
 import com.google.android.material.tabs.TabLayout;
@@ -89,8 +90,11 @@ public class MainActivity extends AppCompatActivity {
         ArrayList<String> titles1 = new ArrayList<>();
         titles1.add("Chats");
         titles1.add("Users");
+        titles1.add("Profile");
         viewPagerAdapter.addFragment(new ChatsFragment(),"Chats");
         viewPagerAdapter.addFragment(new UsersFragment(),"Users");
+        viewPagerAdapter.addFragment(new ProfileFragment(),"Profile");
+
         viewPager.setAdapter(viewPagerAdapter);
         new TabLayoutMediator(tabLayout,viewPager,((tab, position) -> tab.setText(titles1.get(position)))).attach();
     }

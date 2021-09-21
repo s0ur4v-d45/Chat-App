@@ -50,7 +50,7 @@ public class ChatsFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         fuser= FirebaseAuth.getInstance().getCurrentUser();
-        reference= FirebaseDatabase.getInstance().getReference("Chats");
+        reference= FirebaseDatabase.getInstance().getReference("Chats").child(fuser.getUid());
 
         userList=new ArrayList<>();
 

@@ -86,6 +86,8 @@ public class RegisterActivity extends AppCompatActivity {
                     hm.put("id",userid);
                     hm.put("username",user_name);
                     hm.put("imageURL","default");
+                    hm.put("status","offline");
+                    hm.put("search",user_name.toLowerCase());
 
                     reference.setValue(hm).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override

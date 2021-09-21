@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else
                 {
-                    Glide.with(MainActivity.this).load(user.getImageURL()).into(profileImage);
+                    Glide.with(getApplicationContext()).load(user.getImageURL()).into(profileImage);
                 }
             }
 
@@ -111,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId())
         {
             case R.id.logout: FirebaseAuth.getInstance().signOut();
-                              startActivity(new Intent(MainActivity.this,StartActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                              startActivity(new Intent(getApplicationContext(),StartActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
                               return true;
         }
         return false;

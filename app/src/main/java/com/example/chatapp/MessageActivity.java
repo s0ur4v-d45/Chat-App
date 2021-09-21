@@ -63,7 +63,7 @@ public class MessageActivity extends AppCompatActivity {
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MessageActivity.this,MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                startActivity(new Intent(getApplicationContext(),MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
             }
         });
 
@@ -92,7 +92,7 @@ public class MessageActivity extends AppCompatActivity {
                 }
                 else
                 {
-                    Toast.makeText(MessageActivity.this,"You can't send empty message",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),"You can't send empty message",Toast.LENGTH_SHORT).show();
                 }
                 text_send.setText("");
            }
@@ -112,7 +112,7 @@ public class MessageActivity extends AppCompatActivity {
                 }
                 else
                 {
-                    Glide.with(MessageActivity.this).load(user.getImageURL()).into(profile_image);
+                    Glide.with(getApplicationContext()).load(user.getImageURL()).into(profile_image);
                 }
                 readMessages(fuser.getUid(),userid,user.getImageURL());
             }
@@ -152,7 +152,7 @@ public class MessageActivity extends AppCompatActivity {
                     {
                         mchat.add(chat);
                     }
-                  messageAdapter =new MessageAdapter(MessageActivity.this,mchat,imageurl);
+                  messageAdapter =new MessageAdapter(getApplicationContext(),mchat,imageurl);
                     recyclerView.setAdapter(messageAdapter);
                }
             }

@@ -50,9 +50,10 @@ public class ChatsFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         fuser= FirebaseAuth.getInstance().getCurrentUser();
+        userList=new ArrayList<>();
         reference= FirebaseDatabase.getInstance().getReference("Chats").child(fuser.getUid());
 
-        userList=new ArrayList<>();
+
 
         reference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -98,7 +99,7 @@ public class ChatsFragment extends Fragment {
                   //display 1 user fro chats
                     for (String id: userList)
                     {
-                        assert user != null;
+
                         if (user.getId().equals(id))
                         {
                             if(mUsers.size()!=0)

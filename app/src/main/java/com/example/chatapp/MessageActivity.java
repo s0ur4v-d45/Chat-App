@@ -51,6 +51,7 @@ public class MessageActivity extends AppCompatActivity {
 
      Intent intent;
 
+     ValueEventListener seenListener;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -123,8 +124,36 @@ public class MessageActivity extends AppCompatActivity {
             }
         });
 
-
+          seenMessage(userid);
     }
+
+    private void seenMessage(String userid)
+    {
+        reference=FirebaseDatabase.getInstance().getReference("Chats");
+        seenListener=reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                for(DataSnapshot snapshot1:snapshot.getChildren())
+                {
+                    Chat chat= snapshot1.getValue(Chat.class);
+
+                    if(chat.getReceiver().equals(fuser.getUid()) && chat.getSender().equals(userid))
+                    {
+                        HashMap<String,Object> hashMap=new HashMap<>();
+                        hashMap.put("isseen",true);
+                        snapshot1.getRef().updateChildren(hashMap);
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
 
     private void sendMessage(String sender, String receiver, String message)
     {
@@ -133,6 +162,7 @@ public class MessageActivity extends AppCompatActivity {
         hm.put("sender",sender);
         hm.put("receiver",receiver);
         hm.put("message",message);
+        hm.put("isseen",false);
 
         reference.child("Chats").push().setValue(hm);
     }
@@ -181,6 +211,7 @@ public class MessageActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
+        reference.removeEventListener(seenListener);
         status("offline");
     }
 }

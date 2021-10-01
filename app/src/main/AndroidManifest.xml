@@ -4,11 +4,10 @@
 
     <uses-permission android:name="android.permission.INTERNET">
     </uses-permission>
-
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE">
     </uses-permission>
-
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE">
+
     </uses-permission>
 
     <application
@@ -18,6 +17,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ChatApp">
+
+        <activity android:name=".ResetPasswordActivity"
+            android:parentActivityName=".LoginActivity">
+        </activity>
 
         <activity android:name=".MessageActivity">
         </activity>
@@ -40,7 +43,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
 
 </manifest>
